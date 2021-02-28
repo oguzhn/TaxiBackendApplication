@@ -19,20 +19,27 @@ import (
 func main() {
 	var wg sync.WaitGroup
 	ctx, cancel := context.WithCancel(context.Background())
+	mongoUri := os.Getenv("MONGO_URI")
 
-	mongoclient, err := database.NewDatastore("mongodb+srv://user9281:sUvNzESn48M2AWk@assignmentcluster-doq69.mongodb.net/case?ssl=true&retryWrites=true", "case", "trips", ctx)
+	mongoclient, err := database.NewDatastore(mongoUri, "case", "trips", ctx)
 	if err != nil {
 		log.Fatalln("cannot reach mongodb", err)
 	}
 
-	authenticator := authentication.NewHardCodedAuthenticator("token", "admin", "password")
+	token := os.Getenv("TOKEN")
+	username := os.Getenv("USERNAME")
+	password := os.Getenv("PASSWORD")
+	authenticator := authentication.NewHardCodedAuthenticator(token, username, password)
 
 	restController := controller.NewController(mongoclient, authenticator, authenticator)
 	r := http.NewServeMux()
 	r.Handle("/", restController.RegisterHandlers())
-
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	server := &http.Server{
-		Addr: ":8080",
+		Addr: ":" + port,
 		Handler: handlers.RecoveryHandler()(
 			handlers.ProxyHeaders(
 				handlers.LoggingHandler(os.Stdout,
