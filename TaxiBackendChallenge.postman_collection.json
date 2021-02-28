@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "9945d6a6-6d1e-43e5-b4c6-151ae499e1b5",
+		"name": "TaxiBackendChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Min and Max Distance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"point\":\n\t{\n\t\t\"long\":-120.28923776,\n\t\t\"lat\":38.86485915\n\t},\n\t\"radius\":10000\n}"
+				},
+				"url": {
+					"raw": "https://secret-hamlet-49899.herokuapp.com/minmaxdistancetravelledinaspecifiedregion",
+					"protocol": "https",
+					"host": [
+						"secret-hamlet-49899",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"minmaxdistancetravelledinaspecifiedregion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trips in a specified region",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"point\":\n\t{\n\t\t\"long\":-120.28923776,\n\t\t\"lat\":38.86485915\n\t},\n\t\"radius\":100\n}"
+				},
+				"url": {
+					"raw": "https://secret-hamlet-49899.herokuapp.com/tripsinaspecifiedregion",
+					"protocol": "https",
+					"host": [
+						"secret-hamlet-49899",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"tripsinaspecifiedregion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Report model year",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"point\":\n\t{\n\t\t\"long\":-120.28923776,\n\t\t\"lat\":38.86485915\n\t},\n\t\"radius\":10000\n}"
+				},
+				"url": {
+					"raw": "https://secret-hamlet-49899.herokuapp.com/reportmodelyear",
+					"protocol": "https",
+					"host": [
+						"secret-hamlet-49899",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"reportmodelyear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://secret-hamlet-49899.herokuapp.com/login?username=admin&password=password",
+					"protocol": "https",
+					"host": [
+						"secret-hamlet-49899",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
